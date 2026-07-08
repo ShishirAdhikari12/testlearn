@@ -21,5 +21,13 @@ class Student extends Model
     {
         return $this->hasMany(Comment::class, 'student_id', 'id')->orderBy('id', 'desc');
     }
+    
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'student_subject', 'student_id', 'subject_id')
+        ->withPivot('marks');
+    }
 
 }
+
+
