@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Comment extends Model
 {
     protected $fillable = [
-        'email',
-        'phone',
+        'content'
     ];
 
     public function student()
