@@ -15,4 +15,9 @@ class Profile extends Model
     {
         return $this->belongsTo(Student::class, 'student_id', 'id');
     }
+
+    public function profile_detail()
+    {
+        return $this->hasOne(Profile_detail::class, 'profile_id', 'id');
+    }
 }
