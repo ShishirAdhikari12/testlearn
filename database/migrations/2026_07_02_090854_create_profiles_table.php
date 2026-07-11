@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
             $table->string('email');
             $table->string('phone', 20 )->nullable();
+
+            $table->morphs('profileable'); // This will create profileable_id and profileable_type columns for polymorphic relationship
             $table->timestamps();
         });
     }

@@ -11,13 +11,18 @@ class Profile extends Model
         'phone',
     ];
 
-    public function student()
-    {
-        return $this->belongsTo(Student::class, 'student_id', 'id');
-    }
+    // public function student()
+    // {
+    //     return $this->belongsTo(Student::class, 'student_id', 'id');
+    // }
 
     public function profile_detail()
     {
         return $this->hasOne(Profile_detail::class, 'profile_id', 'id');
+    }
+
+    public function profileable()
+    {
+        return $this->morphTo();
     }
 }

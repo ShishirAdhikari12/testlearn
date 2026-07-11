@@ -12,10 +12,10 @@ class Student extends Model
     ];
 
 
-    public function profile()
-    {
-        return $this->hasOne(Profile::class, 'student_id', 'id');
-    }
+    // public function profile()
+    // {
+    //     return $this->hasOne(Profile::class, 'student_id', 'id');
+    // }
 
     public function comments()
     {
@@ -51,4 +51,11 @@ class Student extends Model
             'id'          // Local key on the Comment table
         );
     }
+
+    public function profile()
+    {
+        return $this->morphOne(Profile::class, 'profileable');
+    }
+
+
 }
