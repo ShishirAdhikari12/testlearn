@@ -15,4 +15,9 @@ class Teacher extends Model
     {
         return $this->morphOne(Profile::class, 'profileable');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->orderBy('id', 'desc');
+    }
 }

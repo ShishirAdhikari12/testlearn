@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('student_id')->constrained()->onDelete('cascade');
             $table->text('content');
+            $table->morphs('commentable'); // This will create commentable_id and commentable_type columns for polymorphic relationship
             $table->timestamps();
         });
     }

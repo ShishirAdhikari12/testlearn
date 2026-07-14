@@ -17,10 +17,10 @@ class Student extends Model
     //     return $this->hasOne(Profile::class, 'student_id', 'id');
     // }
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class, 'student_id', 'id')->orderBy('id', 'desc');
-    }
+    // public function comments()
+    // {
+    //     return $this->hasMany(Comment::class, 'student_id', 'id')->orderBy('id', 'desc');
+    // }
 
     public function subjects()
     {
@@ -55,6 +55,11 @@ class Student extends Model
     public function profile()
     {
         return $this->morphOne(Profile::class, 'profileable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->orderBy('id', 'desc');
     }
 
 
