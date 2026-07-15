@@ -20,4 +20,9 @@ class Teacher extends Model
     {
         return $this->morphMany(Comment::class, 'commentable')->orderBy('id', 'desc');
     }
+
+    public function subjects()
+    {
+        return $this->morphToMany(Subject::class, 'courseable');
+    }
 }

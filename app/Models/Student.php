@@ -22,11 +22,11 @@ class Student extends Model
     //     return $this->hasMany(Comment::class, 'student_id', 'id')->orderBy('id', 'desc');
     // }
 
-    public function subjects()
-    {
-        return $this->belongsToMany(Subject::class, 'student_subject', 'student_id', 'subject_id')
-            ->withPivot('marks');
-    }
+    // public function subjects()
+    // {
+    //     return $this->belongsToMany(Subject::class, 'student_subject', 'student_id', 'subject_id')
+    //         ->withPivot('marks');
+    // }
 
     public function detail()
     {
@@ -60,6 +60,11 @@ class Student extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable')->orderBy('id', 'desc');
+    }
+
+    public function subjects()
+    {
+        return $this->morphToMany(Subject::class, 'courseable');
     }
 
 
